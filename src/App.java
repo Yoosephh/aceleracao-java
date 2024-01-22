@@ -1,27 +1,38 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        classifyNumber(-12);
+        classifyNumber(3);
+        classifyNumber(10);
+        Holidays.createHolidays();
+        checkHoliday("13-11-1997");
+        checkHoliday("01-01-2024");
     }
 
-    public static String classifyNumber(int args) {
+    public static void classifyNumber(int args) {
         if(args % 2 == 0) {
             if(args >= 0) { 
-                return args + "é par e positivo";
+                System.out.println(args + " é par e positivo");
+                return;
             }
-            return args + "é par e negativo";
+            System.out.println(args + " é par e negativo");
+            return;
         }
         if (args >=0) {
-            return args + "é impar e positivo";
+            System.out.println(args + " é impar e positivo");
+            return ;
         }
-        return args + "é impar e negativo";
+        System.out.println(args + " é impar e negativo");
     }
 
-    public static int (int args) {
-        if(args == 0) {
-            return 0;
-        }
-        if (args == 1) {
-            return 0;
+    public static void checkHoliday(String date) {
+        for (Holidays h: Holidays.holiday) {
+            if(h.getDate().equals(date)) {
+                System.out.println("O dia " + date + " é " + h.getName() + "!");
+                return;
+            }
+            System.out.println("O dia " + date + " não é um feriado... :/");
+            return;
         }
     }
+
 }
